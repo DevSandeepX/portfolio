@@ -16,7 +16,7 @@ export async function requireAdmin() {
 
     const role = sessionClaims?.metadata?.role;
 
-    if (role !== "admin") {
+    if (role?.toLowerCase() !== "admin") {
         throw new Error("Forbidden");
     }
 

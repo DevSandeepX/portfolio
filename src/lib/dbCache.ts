@@ -1,4 +1,4 @@
-import { revalidateTag } from "next/cache"
+import { revalidatePath, revalidateTag } from "next/cache"
 
 export const CACHE_TAGS = [
     'projects',
@@ -26,11 +26,31 @@ export function getProjectTag(projectId: string, tag: ValidTag) {
     return `project:${projectId}-${tag}` as const
 }
 
-export function revalidateFullCache() {
-    revalidateTag(getGlobalTag("images"), "max")
-    revalidateTag(getGlobalTag("projects"), "max")
-    revalidateTag(getGlobalTag("skills"), "max")
-    revalidateTag(getGlobalTag("users"), "max")
-    revalidateTag(getGlobalTag("projectImages"), "max")
+export async function revalidateFullCache() {
+    // Revalidate all tags
+    Object.values(CACHE_TAGS).forEach(async (tag) => {
+        await revalidateTag(tag, "max");
+    });
+
+    // Revalidate important pages
+    const paths = [
+        "/",
+        "/about",
+        "/projects",
+        "/contact",
+        "/skills",
+        "/blog",
+        "/gallery",
+        "/dashboard",
+        "/dashboard/projects",
+        "/dashboard/images",
+        "/dashboard/settings",
+        "/dashboard/skills",
+        "/dashboard/categories",
+    ];
+
+    paths.forEach((path) => {
+        revalidatePath(path);
+    });
 }
 

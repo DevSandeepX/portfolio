@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { getPaginatedAdminGalleryImages, getPaginatedPublishedGalleryImages } from "@/actions/image";
 import { Loader2Icon } from "lucide-react";
+import GalleryImageSkeleton from "@/components/GalleryImageSkeleton";
 
 const LIMIT = 20;
 
@@ -76,12 +77,14 @@ export default function GalleryInfinite({
                 ))}
             </div>
 
-            {hasMore && (
-                <div ref={ref} className="flex justify-center py-8">
-                    {loading && (
-                        <Loader2Icon className="size-16 animate-spin" />
-                    )}
+            {loading && (
+                <div className="mt-2 grid gap-2 grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+                    <GalleryImageSkeleton count={LIMIT} />
                 </div>
+            )}
+
+            {hasMore && (
+                <div ref={ref} className="h-10" />
             )}
 
             {!hasMore && (

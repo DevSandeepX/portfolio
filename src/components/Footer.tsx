@@ -35,9 +35,6 @@ export default function Footer() {
                         Building modern web applications with Next.js & TypeScript.
                     </p>
                 </div>
-
-
-
                 <Suspense>
                     <SuspendedSocialLinks />
                 </Suspense>
@@ -101,7 +98,7 @@ export async function SuspendedSocialLinks() {
 
     if (links.length === 0) {
         return (
-            <div className="rounded-xl border border-dashed p-10 text-center">
+            <div className="rounded-xl border border-dashed p-10 text-center pt-10">
                 <h2 className="text-xl font-semibold">No Social Links</h2>
                 <p className="mt-2 text-muted-foreground">
                     Social links will appear here once they are added.

@@ -1,5 +1,4 @@
 import { deleteUser, upsertUser } from "@/actions/user";
-import { clerkClient } from "@clerk/nextjs/server";
 import { verifyWebhook } from "@clerk/nextjs/webhooks";
 import { NextRequest } from "next/server";
 
@@ -16,6 +15,7 @@ export async function POST(req: NextRequest) {
                     last_name,
                     image_url,
                     email_addresses,
+                    public_metadata,
                 } = evt.data;
 
                 await upsertUser({
@@ -23,15 +23,7 @@ export async function POST(req: NextRequest) {
                     name: `${first_name ?? ""} ${last_name ?? ""}`.trim(),
                     email: email_addresses[0]?.email_address ?? "",
                     avatarUrl: image_url,
-                    role: "CLIENT",
-                });
-
-                const client = await clerkClient();
-
-                await client.users.updateUserMetadata(id, {
-                    publicMetadata: {
-                        role: "client",
-                    },
+                    role: (public_metadata?.role as "ADMIN" | "CLIENT") ?? "CLIENT",
                 });
 
                 break;
@@ -43,9 +35,6 @@ export async function POST(req: NextRequest) {
                 }
                 break;
             }
-
-            default:
-                break;
         }
 
         return Response.json({ success: true });

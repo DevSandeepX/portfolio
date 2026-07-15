@@ -11,6 +11,18 @@ export type User = {
     role: UserRole;
 };
 
+type UserData = {
+    id: string;
+    clerkId: string;
+    email: string;
+    name: string | null;
+    avatarUrl: string | null;
+    role: UserRole;
+    createdAt: Date;
+    updatedAt: Date;
+    lastLoginAt: Date | null;
+};
+
 type ActionResult<T = void> = {
     success: boolean;
     message: string;
@@ -19,7 +31,7 @@ type ActionResult<T = void> = {
 
 export async function upsertUser(
     data: User
-): Promise<ActionResult> {
+): Promise<ActionResult<UserData>> {
     try {
         if (!data.clerkId.trim()) {
             return {
@@ -28,10 +40,11 @@ export async function upsertUser(
             };
         }
 
-        await upsertUserDb(data);
+        const user = await upsertUserDb(data);
 
         return {
             success: true,
+            data: user,
             message: "User synchronized successfully.",
         };
     } catch (error) {

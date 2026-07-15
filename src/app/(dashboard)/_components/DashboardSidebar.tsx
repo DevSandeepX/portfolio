@@ -10,6 +10,7 @@ import { AiFillProject } from "react-icons/ai";
 import { GrGallery } from "react-icons/gr";
 import { MdOutlineSettings } from "react-icons/md";
 import { BsLightningChargeFill } from "react-icons/bs";
+import AppCacheButton from "./AppCacheButton";
 
 
 
@@ -42,9 +43,10 @@ export default function DashboardSidebar() {
                 </div>
             </div>
             <div className="space-y-4 mt-4">
-                <h2 className="text-gray-400  text-base">Settings</h2>
+                <h2 className="text-gray-400  text-base">App settings</h2>
                 <div className="flex flex-col gap-2">
                     <NavLink icon={MdOutlineSettings} label="Settings" href="/dashboard/settings" />
+                    <AppCacheButton />
                 </div>
             </div>
         </div>

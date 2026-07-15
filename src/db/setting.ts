@@ -1,3 +1,4 @@
+import { revalidateAppSettingCache } from "@/cache/setting";
 import { getGlobalTag } from "@/lib/dbCache";
 import { prisma } from "@/lib/prisma";
 import { AppSettingFormInput } from "@/schemas/setting";
@@ -7,6 +8,13 @@ export async function getAppSetting() {
     "use cache"
     cacheTag(getGlobalTag("settings"))
     return prisma.setting.findFirst()
+}
+export async function getAppSettingWithoutCache() {
+    return prisma.setting.findFirst({
+        select: {
+            isMantananceMode: true,
+        }
+    })
 }
 
 export async function updateAppSettingDb(
@@ -73,5 +81,16 @@ export async function getSeoSettings() {
             seoKeywords: true,
             twitterUrl: true
         }
+    })
+}
+
+export async function updateMantananceModeDb(
+    id: string, mode: boolean) {
+    return prisma.setting.update({
+        where: { id },
+        data: {
+            isMantananceMode: mode
+        },
+        select: { id: true, isMantananceMode: true }
     })
 }
