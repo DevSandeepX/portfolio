@@ -1,15 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { QUERIES } from "@/server/db/post-queries";
 
-import { categories, posts } from "../../data/post-mock-data";
+export default async function BlogPage() {
 
-export default function BlogPage() {
-    const featured = posts.find((p) => p.featured);
-    const latestPosts = posts.filter((p) => !p.featured);
+
+    const posts = await QUERIES.getAllPosts()
 
     return (
         <main className="container py-12 space-y-12">
@@ -36,22 +35,6 @@ export default function BlogPage() {
 
             </section>
 
-            {/* Categories */}
-
-            <section className="flex flex-wrap gap-3 justify-center">
-
-                {categories.map((category) => (
-                    <Button
-                        key={category}
-                        variant="outline"
-                        className="rounded-full"
-                    >
-                        {category}
-                    </Button>
-                ))}
-
-            </section>
-
 
 
             <section>
@@ -62,7 +45,7 @@ export default function BlogPage() {
 
                 <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
 
-                    {latestPosts.map((post) => (
+                    {posts.map((post) => (
                         <Link
                             key={post.id}
                             href={`/blog/${post.slug}`}
@@ -71,12 +54,12 @@ export default function BlogPage() {
 
                             <div className="relative aspect-video">
 
-                                <Image
+                                {post.image && <Image
                                     src={post.image}
                                     alt={post.title}
                                     fill
                                     className="object-cover"
-                                />
+                                />}
 
                             </div>
 

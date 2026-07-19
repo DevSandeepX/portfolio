@@ -8,13 +8,11 @@ export const blogTable = pgTable(
         slug: text("slug").notNull().unique(),
         excerpt: text("excerpt"),
         image: text("featured_image"),
-        categoryId: uuid("category_id").notNull(),
-        authorId: uuid("author_id").notNull(),
-        readTime: integer("read_time").default(5),
+        category: text('category').notNull(),
+        author: text("author").notNull(),
+        readTime: text("read_time"),
         featured: boolean("featured").default(false),
-        publishedAt: timestamp("published_at", {
-            withTimezone: true,
-        }),
+        publishedAt: text("published_at"),
         createdAt: timestamp("created_at", {
             withTimezone: true,
         })
@@ -27,8 +25,8 @@ export const blogTable = pgTable(
     },
     (table) => ({
         slugIdx: uniqueIndex("blog_slug_idx").on(table.slug),
-        categoryIdx: index("blog_category_idx").on(table.categoryId),
-        authorIdx: index("blog_author_idx").on(table.authorId),
+        categoryIdx: index("blog_category_idx").on(table.category),
+        authorIdx: index("blog_author_idx").on(table.author),
         publishedIdx: index("blog_published_idx").on(table.publishedAt),
     })
 );
