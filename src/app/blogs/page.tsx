@@ -5,14 +5,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import { categories, posts } from "../data/post-mock-data";
+import { categories, posts } from "../../data/post-mock-data";
 
 export default function BlogPage() {
     const featured = posts.find((p) => p.featured);
     const latestPosts = posts.filter((p) => !p.featured);
 
     return (
-        <main className="container mx-auto py-12 space-y-12">
+        <main className="container py-12 space-y-12">
 
             {/* Hero */}
 
