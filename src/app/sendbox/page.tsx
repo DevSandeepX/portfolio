@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { db } from '../../drizzle/db'
 import { blogTable } from '../../drizzle/schema'
-import { posts } from '@/data/post-mock-data'
+import { mockBlogs } from '@/data/post-mock-data';
 
 export default async function SendboxPage() {
     try {
@@ -17,17 +17,8 @@ export default async function SendboxPage() {
             <form
                 action={async () => {
                     "use server"
-                    const insertableData = posts.map((p) => ({
-                        title: p.title,
-                        slug: p.slug,
-                        excerpt: p.excerpt,
-                        category: p.category,
-                        image: p.image,
-                        author: p.author,
-                        publishedAt: p.publishedAt,
-                        readTime: p.readTime,
-                        featured: p.featured,
-                        tags: p.tags
+                    const insertableData = mockBlogs.map((p) => ({
+                        ...p
 
                     }))
                     await db.insert(blogTable).values(insertableData)

@@ -1,3 +1,4 @@
+import { blogTable } from "@/drizzle/schema";
 import type { JSONContent } from "@tiptap/core";
 export const categories = [
     "All",
@@ -26,45 +27,173 @@ type MockPost = {
 };
 
 
-export const posts: MockPost[] = [
+import type { InferInsertModel } from "drizzle-orm";
+
+export const mockBlogs: InferInsertModel<typeof blogTable>[] = [
     {
-        id: "1",
-        title: "Mastering Next.js App Router in 2026",
-        slug: "mastering-nextjs-app-router",
+        title: "Mastering Next.js 15 App Router",
+        slug: "mastering-nextjs-15-app-router",
+        excerpt:
+            "Learn the App Router, Server Components, Route Handlers, caching, and best practices in Next.js 15.",
+        image:
+            "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+        status: "published",
+        categoryId: "11111111-1111-1111-1111-111111111111",
+        authorId: "user_2abc123",
         content: {
             "type": "doc",
             "content": [
                 {
                     "type": "heading",
-                    "attrs": {
-                        "level": 1
-                    },
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": "Mastering Next.js App Router in 2026"
-                        }
-                    ]
+                    "attrs": { "level": 1 },
+                    "content": [{ "type": "text", "text": "Mastering Next.js 15: The Complete Guide" }]
                 },
                 {
                     "type": "paragraph",
                     "content": [
                         {
                             "type": "text",
-                            "text": "The App Router is the modern way to build scalable applications with Next.js. It introduces layouts, nested routing, server components, streaming, and powerful caching mechanisms that simplify application architecture."
+                            "marks": [{ "type": "italic" }],
+                            "text": "Next.js 15 brings revolutionary changes to the React ecosystem."
+                        },
+                        { "type": "text", "text": " With the new compiler, improved caching strategies, and the App Router reaching maturity, there's never been a better time to upgrade your skills." }
+                    ]
+                },
+                {
+                    "type": "heading",
+                    "attrs": { "level": 2 },
+                    "content": [{ "type": "text", "text": "What's New in Next.js 15?" }]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [{ "type": "text", "text": "The latest release focuses on performance and developer experience. Here are the key highlights:" }]
+                },
+                {
+                    "type": "bulletList",
+                    "content": [
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        { "type": "text", "marks": [{ "type": "bold" }], "text": "Turbopack" },
+                                        { "type": "text", "text": " - Now stable and 700x faster than Webpack for large applications" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        { "type": "text", "marks": [{ "type": "bold" }], "text": "Server Actions" },
+                                        { "type": "text", "text": " - Enhanced security and automatic deduplication" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        { "type": "text", "marks": [{ "type": "bold" }], "text": "Partial Prerendering" },
+                                        { "type": "text", "text": " - Static and dynamic content combined seamlessly" }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
                 {
                     "type": "heading",
-                    "attrs": {
-                        "level": 2
-                    },
+                    "attrs": { "level": 2 },
+                    "content": [{ "type": "text", "text": "The App Router Deep Dive" }]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [{ "type": "text", "text": "The App Router represents a paradigm shift in how we build React applications. Understanding its core concepts is crucial:" }]
+                },
+                {
+                    "type": "orderedList",
+                    "attrs": { "start": 1 },
+                    "content": [
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        { "type": "text", "marks": [{ "type": "bold" }], "text": "Server Components" },
+                                        { "type": "text", "text": " - Render on the server by default, reducing JavaScript bundle size" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        { "type": "text", "marks": [{ "type": "bold" }], "text": "Client Components" },
+                                        { "type": "text", "text": " - Opt-in interactivity with the 'use client' directive" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        { "type": "text", "marks": [{ "type": "bold" }], "text": "Layouts" },
+                                        { "type": "text", "text": " - Nested layouts that preserve state across navigation" }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "heading",
+                    "attrs": { "level": 2 },
+                    "content": [{ "type": "text", "text": "Code Example: Server Actions" }]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [{ "type": "text", "text": "Here's how to implement a secure form submission using Server Actions:" }]
+                },
+                {
+                    "type": "codeBlock",
+                    "attrs": { "language": "typescript" },
                     "content": [
                         {
                             "type": "text",
-                            "text": "Why App Router?"
+                            "text": "'use server'\n\nimport { revalidatePath } from 'next/cache'\nimport { redirect } from 'next/navigation'\n\nexport async function createPost(formData: FormData) {\n  const title = formData.get('title') as string\n  const content = formData.get('content') as string\n  \n  // Validate input\n  if (!title || !content) {\n    throw new Error('Title and content are required')\n  }\n  \n  // Database logic here\n  await db.post.create({\n    data: { title, content, slug: slugify(title) }\n  })\n  \n  revalidatePath('/posts')\n  redirect('/posts')\n}"
                         }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [{ "type": "text", "text": "The beauty of this approach is that the code runs exclusively on the server, eliminating API boilerplate while maintaining type safety." }]
+                },
+                {
+                    "type": "heading",
+                    "attrs": { "level": 2 },
+                    "content": [{ "type": "text", "text": "Caching Strategies" }]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [
+                        { "type": "text", "text": "Next.js 15 introduces " },
+                        { "type": "text", "marks": [{ "type": "code" }], "text": "unstable_cache" },
+                        { "type": "text", "text": " for fine-grained control. Understanding the caching layers is essential:" }
                     ]
                 },
                 {
@@ -76,10 +205,8 @@ export const posts: MockPost[] = [
                                 {
                                     "type": "paragraph",
                                     "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "Nested layouts reduce code duplication."
-                                        }
+                                        { "type": "text", "marks": [{ "type": "bold" }], "text": "Request Memoization" },
+                                        { "type": "text", "text": " - Deduplicates fetch requests during rendering" }
                                     ]
                                 }
                             ]
@@ -90,10 +217,8 @@ export const posts: MockPost[] = [
                                 {
                                     "type": "paragraph",
                                     "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "Server Components improve performance."
-                                        }
+                                        { "type": "text", "marks": [{ "type": "bold" }], "text": "Data Cache" },
+                                        { "type": "text", "text": " - Persists fetch results across requests" }
                                     ]
                                 }
                             ]
@@ -104,24 +229,8 @@ export const posts: MockPost[] = [
                                 {
                                     "type": "paragraph",
                                     "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "Streaming makes pages load faster."
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "listItem",
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "Built-in data caching simplifies fetching."
-                                        }
+                                        { "type": "text", "marks": [{ "type": "bold" }], "text": "Full Route Cache" },
+                                        { "type": "text", "text": " - Statically generates pages at build time" }
                                     ]
                                 }
                             ]
@@ -130,307 +239,340 @@ export const posts: MockPost[] = [
                 },
                 {
                     "type": "heading",
-                    "attrs": {
-                        "level": 2
-                    },
+                    "attrs": { "level": 2 },
+                    "content": [{ "type": "text", "text": "Conclusion" }]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [{ "type": "text", "text": "Mastering Next.js 15 requires understanding the shift toward server-first architecture. By leveraging Server Components, Actions, and the new caching model, you can build applications that are both fast and maintainable." }]
+                },
+                {
+                    "type": "paragraph",
                     "content": [
+                        { "type": "text", "text": "Ready to upgrade? Check out the " },
                         {
                             "type": "text",
-                            "text": "Project Structure"
+                            "marks": [
+                                {
+                                    "type": "link",
+                                    "attrs": {
+                                        "href": "https://nextjs.org/docs",
+                                        "target": "_blank",
+                                        "rel": "noopener noreferrer nofollow"
+                                    }
+                                }
+                            ],
+                            "text": "official documentation"
+                        },
+                        { "type": "text", "text": " for detailed migration guides." }
+                    ]
+                }
+            ]
+        },
+        tags: ["Next.js", "React", "App Router"],
+        readTime: 8,
+        featured: true,
+        keywords: [
+            "nextjs",
+            "app router",
+            "react",
+            "server components",
+        ],
+        seoTitle: "Mastering Next.js 15 App Router",
+        seoDescription:
+            "Complete guide to Next.js 15 App Router with practical examples.",
+        seoKeywords: [
+            "Next.js",
+            "React",
+            "App Router",
+            "Server Components",
+        ],
+        canonicalUrl:
+            "https://sandeep.dev/blog/mastering-nextjs-15-app-router",
+        allowComments: true,
+        publishedAt: new Date("2026-07-10"),
+    },
+
+    {
+        title: "Build a Secure Authentication System with Clerk",
+        slug: "build-secure-authentication-with-clerk",
+        excerpt:
+            "Implement authentication, user management, organizations, middleware, and webhooks using Clerk.",
+        image:
+            "https://images.unsplash.com/photo-1555949963-aa79dcee981c",
+        status: "published",
+        categoryId: "11111111-1111-1111-1111-111111111112",
+        authorId: "user_2abc123",
+        content: {
+            "type": "doc",
+            "content": [
+                {
+                    "type": "heading",
+                    "attrs": { "level": 2 },
+                    "content": [{ "type": "text", "text": "Features" }]
+                },
+                {
+                    "type": "bulletList",
+                    "content": [
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [{ "type": "text", "text": "First item" }]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [{ "type": "text", "text": "Second item" }]
+                                }
+                            ]
                         }
                     ]
                 },
                 {
                     "type": "codeBlock",
-                    "attrs": {
-                        "language": "txt"
-                    },
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": "app/\n ├── layout.tsx\n ├── page.tsx\n ├── blog/\n │    ├── page.tsx\n │    └── [slug]/page.tsx\n └── dashboard/"
-                        }
-                    ]
-                },
-                {
-                    "type": "paragraph",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": "Each route can have its own layout, loading state, error boundary, and metadata. This makes large applications much easier to organize."
-                        }
-                    ]
-                },
-                {
-                    "type": "blockquote",
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "text": "The App Router encourages thinking in layouts instead of pages."
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "heading",
-                    "attrs": {
-                        "level": 2
-                    },
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": "Best Practices"
-                        }
-                    ]
-                },
-                {
-                    "type": "orderedList",
-                    "attrs": {
-                        "start": 1
-                    },
-                    "content": [
-                        {
-                            "type": "listItem",
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "Use Server Components by default."
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "listItem",
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "Move client-only logic into Client Components."
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "listItem",
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "Cache database queries whenever possible."
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "listItem",
-                            "content": [
-                                {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "text": "Optimize images using the Next.js Image component."
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "horizontalRule"
-                },
-                {
-                    "type": "heading",
-                    "attrs": {
-                        "level": 2
-                    },
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": "Conclusion"
-                        }
-                    ]
-                },
-                {
-                    "type": "paragraph",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": "Next.js App Router is now the recommended architecture for modern React applications. By leveraging layouts, server components, caching, and streaming, developers can build applications that are both fast and maintainable."
-                        }
-                    ]
+                    "attrs": { "language": "typescript" },
+                    "content": [{ "type": "text", "text": "const x = 1;" }]
                 }
             ]
         },
-        excerpt:
-            "Learn layouts, server components, caching, routing and best practices for building scalable Next.js applications.",
-        category: "Next.js",
-        image:
-            "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
-        author: "Sandeep Chauhan",
-        publishedAt: "July 15, 2026",
-        readTime: "8 min read",
-        featured: true,
-        tags: ["Next.js", "React"],
-    },
-    {
-        id: "2",
-        title: "React Performance Optimization Guide",
-        slug: "react-performance",
-        content: {
-            "type": "doc",
-            "content": [
-                {
-                    "type": "paragraph",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": "Hello World"
-                        }
-                    ]
-                }
-            ]
-        },
-        excerpt:
-            "Improve rendering speed using memoization, lazy loading and server components.",
-        category: "React",
-        image:
-            "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
-        author: "Sandeep Chauhan",
-        publishedAt: "July 12, 2026",
-        readTime: "6 min read",
+        tags: ["Clerk", "Authentication", "Next.js"],
+        readTime: 10,
         featured: false,
-        tags: ["React", "Performance"],
+        keywords: [
+            "clerk auth",
+            "authentication",
+            "nextjs auth",
+        ],
+        seoTitle: "Complete Clerk Authentication Guide",
+        seoDescription:
+            "Learn how to build secure authentication using Clerk and Next.js.",
+        seoKeywords: [
+            "Clerk",
+            "Authentication",
+            "Next.js",
+        ],
+        canonicalUrl:
+            "https://sandeep.dev/blog/build-secure-authentication-with-clerk",
+        allowComments: true,
+        publishedAt: new Date("2026-07-08"),
     },
+
     {
-        id: "3",
-        title: "Building REST APIs with Node.js & Express",
-        slug: "node-rest-api",
-        content: {
-            "type": "doc",
-            "content": [
-                {
-                    "type": "paragraph",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": "Hello World"
-                        }
-                    ]
-                }
-            ]
-        },
+        title: "Prisma ORM Complete Guide with PostgreSQL",
+        slug: "prisma-orm-complete-guide",
         excerpt:
-            "Create production-ready REST APIs using Express, Prisma and PostgreSQL.",
-        category: "Node.js",
+            "Learn Prisma schema design, migrations, relations, transactions, and performance optimization.",
         image:
             "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
-        author: "Sandeep Chauhan",
-        publishedAt: "July 10, 2026",
-        readTime: "10 min read",
-        featured: false,
-        tags: ["Node.js", "Express"],
-    },
-    {
-        id: "4",
-        title: "Prisma Tips Every Backend Developer Should Know",
-        slug: "prisma-tips",
+        status: "published",
+        categoryId: "11111111-1111-1111-1111-111111111113",
+        authorId: "user_2abc123",
         content: {
             "type": "doc",
             "content": [
                 {
-                    "type": "paragraph",
+                    "type": "heading",
+                    "attrs": { "level": 2 },
+                    "content": [{ "type": "text", "text": "Features" }]
+                },
+                {
+                    "type": "bulletList",
                     "content": [
                         {
-                            "type": "text",
-                            "text": "Hello World"
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [{ "type": "text", "text": "First item" }]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [{ "type": "text", "text": "Second item" }]
+                                }
+                            ]
                         }
                     ]
+                },
+                {
+                    "type": "codeBlock",
+                    "attrs": { "language": "typescript" },
+                    "content": [{ "type": "text", "text": "const x = 1;" }]
                 }
             ]
         },
-        excerpt:
-            "Schema design, transactions, indexes and query optimization with Prisma.",
-        category: "Prisma",
-        image:
-            "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-        author: "Sandeep Chauhan",
-        publishedAt: "July 8, 2026",
-        readTime: "7 min read",
-        featured: false,
-        tags: ["Prisma", "Database"],
+        tags: ["Prisma", "PostgreSQL", "Database"],
+        readTime: 12,
+        featured: true,
+        keywords: [
+            "prisma",
+            "postgres",
+            "database",
+            "orm",
+        ],
+        seoTitle: "Prisma ORM with PostgreSQL",
+        seoDescription:
+            "Everything you need to know about Prisma ORM and PostgreSQL.",
+        seoKeywords: [
+            "Prisma",
+            "PostgreSQL",
+            "ORM",
+        ],
+        canonicalUrl:
+            "https://sandeep.dev/blog/prisma-orm-complete-guide",
+        allowComments: true,
+        publishedAt: new Date("2026-07-05"),
     },
+
     {
-        id: "5",
-        title: "TypeScript Patterns for Large Projects",
-        slug: "typescript-patterns",
+        title: "Docker for Node.js Developers",
+        slug: "docker-for-nodejs-developers",
+        excerpt:
+            "Learn Docker, Docker Compose, multi-stage builds, volumes, and production deployment for Node.js.",
+        image:
+            "https://images.unsplash.com/photo-1605745341112-85968b19335b",
+        status: "published",
+        categoryId: "11111111-1111-1111-1111-111111111114",
+        authorId: "user_2abc123",
         content: {
             "type": "doc",
             "content": [
                 {
-                    "type": "paragraph",
+                    "type": "heading",
+                    "attrs": { "level": 2 },
+                    "content": [{ "type": "text", "text": "Features" }]
+                },
+                {
+                    "type": "bulletList",
                     "content": [
                         {
-                            "type": "text",
-                            "text": "Hello World"
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [{ "type": "text", "text": "First item" }]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [{ "type": "text", "text": "Second item" }]
+                                }
+                            ]
                         }
                     ]
+                },
+                {
+                    "type": "codeBlock",
+                    "attrs": { "language": "typescript" },
+                    "content": [{ "type": "text", "text": "const x = 1;" }]
                 }
             ]
         },
-        excerpt:
-            "Build maintainable applications using utility types, generics and strict typing.",
-        category: "TypeScript",
-        image:
-            "https://images.unsplash.com/photo-1518770660439-4636190af475",
-        author: "Sandeep Chauhan",
-        publishedAt: "July 5, 2026",
-        readTime: "9 min read",
+        tags: ["Docker", "Node.js", "DevOps"],
+        readTime: 9,
         featured: false,
-        tags: ["TypeScript"],
+        keywords: [
+            "docker",
+            "docker compose",
+            "nodejs",
+            "deployment",
+        ],
+        seoTitle: "Docker Guide for Node.js Developers",
+        seoDescription:
+            "Deploy Node.js applications using Docker like a professional.",
+        seoKeywords: [
+            "Docker",
+            "Node.js",
+            "DevOps",
+        ],
+        canonicalUrl:
+            "https://sandeep.dev/blog/docker-for-nodejs-developers",
+        allowComments: true,
+        publishedAt: new Date("2026-07-02"),
     },
+
     {
-        id: "6",
-        title: "Modern CSS Tricks You Should Use",
-        slug: "modern-css",
+        title: "Understanding React Server Components",
+        slug: "understanding-react-server-components",
+        excerpt:
+            "Deep dive into React Server Components, rendering strategies, and performance improvements.",
+        image:
+            "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+        status: "published",
+        categoryId: "11111111-1111-1111-1111-111111111115",
+        authorId: "user_2abc123",
         content: {
             "type": "doc",
             "content": [
                 {
-                    "type": "paragraph",
+                    "type": "heading",
+                    "attrs": { "level": 2 },
+                    "content": [{ "type": "text", "text": "Features" }]
+                },
+                {
+                    "type": "bulletList",
                     "content": [
                         {
-                            "type": "text",
-                            "text": "Hello World"
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [{ "type": "text", "text": "First item" }]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [{ "type": "text", "text": "Second item" }]
+                                }
+                            ]
                         }
                     ]
+                },
+                {
+                    "type": "codeBlock",
+                    "attrs": { "language": "typescript" },
+                    "content": [{ "type": "text", "text": "const x = 1;" }]
                 }
             ]
         },
-        excerpt:
-            "Container queries, clamp(), fluid typography and modern layouts.",
-        category: "CSS",
-        image:
-            "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-        author: "Sandeep Chauhan",
-        publishedAt: "July 2, 2026",
-        readTime: "5 min read",
-        featured: false,
-        tags: ["CSS"],
+        tags: ["React", "RSC", "Performance"],
+        readTime: 11,
+        featured: true,
+        keywords: [
+            "react",
+            "server components",
+            "rsc",
+            "performance",
+        ],
+        seoTitle: "Understanding React Server Components",
+        seoDescription:
+            "Learn React Server Components with practical examples and best practices.",
+        seoKeywords: [
+            "React",
+            "Server Components",
+            "RSC",
+        ],
+        canonicalUrl:
+            "https://sandeep.dev/blog/understanding-react-server-components",
+        allowComments: true,
+        publishedAt: new Date("2026-06-28"),
     },
 ];

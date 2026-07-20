@@ -65,7 +65,7 @@ export default async function BlogPage() {
 
                             <div className="p-5 space-y-3">
 
-                                <Badge>{post.category}</Badge>
+                                <Badge>{post.categoryId}</Badge>
 
                                 <h3 className="font-bold text-xl">
                                     {post.title}
@@ -77,7 +77,7 @@ export default async function BlogPage() {
 
                                 <div className="flex justify-between text-xs text-muted-foreground">
 
-                                    <span>{post.publishedAt}</span>
+                                    <span>{post.publishedAt && post.publishedAt.toLocaleTimeString() || "Unknown date"}</span>
 
                                     <span>{post.readTime}</span>
 
