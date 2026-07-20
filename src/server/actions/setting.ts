@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation"
-import { MUTATION, QUERIES } from "../db/setting"
+"use server"
+import { MUTATION } from "../db/setting"
 
 export const ACTIONS = {
     async createSetting() {

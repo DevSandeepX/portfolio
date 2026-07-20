@@ -576,3 +576,54 @@ export const mockBlogs: InferInsertModel<typeof blogTable>[] = [
         publishedAt: new Date("2026-06-28"),
     },
 ];
+
+export const projects = [
+    {
+        title: "AI Learning Management System",
+        slug: "ai-learning-management-system",
+        description:
+            "A full-stack LMS with AI-powered quiz generation, authentication, analytics, and course management.",
+        image:
+            "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80",
+        tags: ["Next.js", "Prisma", "PostgreSQL", "OpenAI"],
+        github: "#",
+        live: "#",
+        featured: true,
+    },
+    {
+        title: "Developer Portfolio",
+        slug: "developer-portfolio",
+        description:
+            "A modern personal portfolio built with Next.js, Tailwind CSS, and TypeScript.",
+        image:
+            "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80",
+        tags: ["Next.js", "Tailwind", "TypeScript"],
+        github: "#",
+        live: "#",
+        featured: false,
+    },
+    {
+        title: "Blog CMS",
+        slug: "blog-cms",
+        description:
+            "A blogging platform featuring a rich text editor, categories, tags, SEO, and markdown support.",
+        image:
+            "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=80",
+        tags: ["React", "Prisma", "TipTap"],
+        github: "#",
+        live: "#",
+        featured: false,
+    },
+    {
+        title: "E-Commerce Store",
+        slug: "ecommerce-store",
+        description:
+            "A responsive online store with cart, authentication, product management, and payments.",
+        image:
+            "https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=1200&q=80",
+        tags: ["Next.js", "Stripe", "PostgreSQL"],
+        github: "#",
+        live: "#",
+        featured: true,
+    },
+];
