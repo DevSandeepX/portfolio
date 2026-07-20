@@ -9,20 +9,21 @@ export default function ProjectCard({ props }: { props: { project: Project } }) 
             key={project.id}
             className="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
         >
-            <div className="relative aspect-video overflow-hidden">
-                {project.image && <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                />}
+            <Link href={`/projects/${project.slug}`}>
+                <div className="relative aspect-video overflow-hidden">
+                    {project.image && <img
+                        src={project.image}
+                        alt={project.title}
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    />}
 
-                {project.featured && (
-                    <span className="absolute left-4 top-4 rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white">
-                        Featured
-                    </span>
-                )}
-            </div>
-
+                    {project.featured && (
+                        <span className="absolute left-4 top-4 rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white">
+                            Featured
+                        </span>
+                    )}
+                </div>
+            </Link>
             <div className="p-6">
                 <h2 className="text-xl font-semibold text-slate-900">
                     {project.title}
@@ -68,6 +69,7 @@ export default function ProjectCard({ props }: { props: { project: Project } }) 
                     </div>
                 </div>
             </div>
+
         </article>
     )
 }

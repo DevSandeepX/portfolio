@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CalendarDays, Clock3, User, ArrowLeft, Share2, Bookmark, Link2 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { QUERIES } from "@/server/db/post-queries";
-import { TipTabRenderer } from "@/components/TipTabRenderer";
+import { TipTapRenderer } from "@/components/TipTapRenderer";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -120,7 +120,7 @@ export default async function BlogPage({ params }: Props) {
 
                 {/* Article Content */}
                 <div className="">
-                    <TipTabRenderer content={post.content} />
+                    <TipTapRenderer content={post.content} />
                 </div>
 
                 {/* Engagement Section */}

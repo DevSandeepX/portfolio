@@ -1,5 +1,6 @@
 import { boolean, index, integer, json, pgEnum, pgTable, text, timestamp, uniqueIndex, uuid } from "drizzle-orm/pg-core";
 import { categoryTable } from "./category";
+import { JSONContent } from "@tiptap/react"
 
 const projectStatuses = [
     "in_progress",
@@ -22,6 +23,7 @@ export const projectTable = pgTable(
         live: text("live_url").notNull(),
         status: projectStatusEnum("blog_status").notNull().default("complated"),
         techStack: text("tags").array().default([]),
+        content: json("content").$type<JSONContent>(),
 
         featured: boolean("featured").default(false),
         createdAt: timestamp("created_at", {

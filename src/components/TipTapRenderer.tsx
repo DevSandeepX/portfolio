@@ -7,7 +7,7 @@ interface TipTabRendererProps {
     content: JSONContent | null | undefined | unknown;
 }
 
-export function TipTabRenderer({ content }: TipTabRendererProps) {
+export function TipTapRenderer({ content }: TipTabRendererProps) {
     if (!content) {
         return <div className="text-gray-500">No content</div>;
     }

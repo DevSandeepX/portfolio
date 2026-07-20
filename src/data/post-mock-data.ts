@@ -581,6 +581,199 @@ export const projects = [
     {
         title: "AI Learning Management System",
         slug: "ai-learning-management-system",
+        content: {
+            type: "doc",
+            content: [
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Project Overview" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "AI Learning Management System is a modern full-stack web application that helps educational institutions manage courses, students, quizzes, and learning progress. The platform leverages AI to automatically generate quizzes from course content, reducing manual effort while improving the learning experience.",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Problem Statement" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "Traditional learning platforms often require instructors to manually create quizzes and manage student progress. This project aims to simplify these tasks with automation, analytics, and an intuitive dashboard.",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Key Features" }],
+                },
+                {
+                    type: "bulletList",
+                    content: [
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "AI-powered quiz generation" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Role-based authentication and authorization" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Course and chapter management" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Interactive analytics dashboard" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Responsive design for desktop and mobile" }],
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Technology Stack" }],
+                },
+                {
+                    type: "orderedList",
+                    attrs: {
+                        start: 1,
+                    },
+                    content: [
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Next.js & React" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "TypeScript" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Prisma & PostgreSQL" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Tailwind CSS & shadcn/ui" }],
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Challenges" }],
+                },
+                {
+                    type: "blockquote",
+                    content: [
+                        {
+                            type: "paragraph",
+                            content: [
+                                {
+                                    type: "text",
+                                    text: "Building a scalable architecture while maintaining performance and reusable components was one of the biggest challenges during development.",
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Code Example" }],
+                },
+                {
+                    type: "codeBlock",
+                    attrs: {
+                        language: "typescript",
+                    },
+                    content: [
+                        {
+                            type: "text",
+                            text: "const quizzes = await db.quiz.findMany();",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Conclusion" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "This project demonstrates my ability to build scalable, production-ready web applications using modern technologies while focusing on clean architecture, user experience, and maintainable code.",
+                        },
+                    ],
+                },
+            ],
+        },
         description:
             "A full-stack LMS with AI-powered quiz generation, authentication, analytics, and course management.",
         image:
@@ -593,6 +786,199 @@ export const projects = [
     {
         title: "Developer Portfolio",
         slug: "developer-portfolio",
+        content: {
+            type: "doc",
+            content: [
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Project Overview" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "AI Learning Management System is a modern full-stack web application that helps educational institutions manage courses, students, quizzes, and learning progress. The platform leverages AI to automatically generate quizzes from course content, reducing manual effort while improving the learning experience.",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Problem Statement" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "Traditional learning platforms often require instructors to manually create quizzes and manage student progress. This project aims to simplify these tasks with automation, analytics, and an intuitive dashboard.",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Key Features" }],
+                },
+                {
+                    type: "bulletList",
+                    content: [
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "AI-powered quiz generation" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Role-based authentication and authorization" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Course and chapter management" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Interactive analytics dashboard" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Responsive design for desktop and mobile" }],
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Technology Stack" }],
+                },
+                {
+                    type: "orderedList",
+                    attrs: {
+                        start: 1,
+                    },
+                    content: [
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Next.js & React" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "TypeScript" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Prisma & PostgreSQL" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Tailwind CSS & shadcn/ui" }],
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Challenges" }],
+                },
+                {
+                    type: "blockquote",
+                    content: [
+                        {
+                            type: "paragraph",
+                            content: [
+                                {
+                                    type: "text",
+                                    text: "Building a scalable architecture while maintaining performance and reusable components was one of the biggest challenges during development.",
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Code Example" }],
+                },
+                {
+                    type: "codeBlock",
+                    attrs: {
+                        language: "typescript",
+                    },
+                    content: [
+                        {
+                            type: "text",
+                            text: "const quizzes = await db.quiz.findMany();",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Conclusion" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "This project demonstrates my ability to build scalable, production-ready web applications using modern technologies while focusing on clean architecture, user experience, and maintainable code.",
+                        },
+                    ],
+                },
+            ],
+        },
         description:
             "A modern personal portfolio built with Next.js, Tailwind CSS, and TypeScript.",
         image:
@@ -605,6 +991,199 @@ export const projects = [
     {
         title: "Blog CMS",
         slug: "blog-cms",
+        content: {
+            type: "doc",
+            content: [
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Project Overview" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "AI Learning Management System is a modern full-stack web application that helps educational institutions manage courses, students, quizzes, and learning progress. The platform leverages AI to automatically generate quizzes from course content, reducing manual effort while improving the learning experience.",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Problem Statement" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "Traditional learning platforms often require instructors to manually create quizzes and manage student progress. This project aims to simplify these tasks with automation, analytics, and an intuitive dashboard.",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Key Features" }],
+                },
+                {
+                    type: "bulletList",
+                    content: [
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "AI-powered quiz generation" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Role-based authentication and authorization" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Course and chapter management" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Interactive analytics dashboard" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Responsive design for desktop and mobile" }],
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Technology Stack" }],
+                },
+                {
+                    type: "orderedList",
+                    attrs: {
+                        start: 1,
+                    },
+                    content: [
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Next.js & React" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "TypeScript" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Prisma & PostgreSQL" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Tailwind CSS & shadcn/ui" }],
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Challenges" }],
+                },
+                {
+                    type: "blockquote",
+                    content: [
+                        {
+                            type: "paragraph",
+                            content: [
+                                {
+                                    type: "text",
+                                    text: "Building a scalable architecture while maintaining performance and reusable components was one of the biggest challenges during development.",
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Code Example" }],
+                },
+                {
+                    type: "codeBlock",
+                    attrs: {
+                        language: "typescript",
+                    },
+                    content: [
+                        {
+                            type: "text",
+                            text: "const quizzes = await db.quiz.findMany();",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Conclusion" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "This project demonstrates my ability to build scalable, production-ready web applications using modern technologies while focusing on clean architecture, user experience, and maintainable code.",
+                        },
+                    ],
+                },
+            ],
+        },
         description:
             "A blogging platform featuring a rich text editor, categories, tags, SEO, and markdown support.",
         image:
@@ -617,6 +1196,199 @@ export const projects = [
     {
         title: "E-Commerce Store",
         slug: "ecommerce-store",
+        content: {
+            type: "doc",
+            content: [
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Project Overview" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "AI Learning Management System is a modern full-stack web application that helps educational institutions manage courses, students, quizzes, and learning progress. The platform leverages AI to automatically generate quizzes from course content, reducing manual effort while improving the learning experience.",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Problem Statement" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "Traditional learning platforms often require instructors to manually create quizzes and manage student progress. This project aims to simplify these tasks with automation, analytics, and an intuitive dashboard.",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Key Features" }],
+                },
+                {
+                    type: "bulletList",
+                    content: [
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "AI-powered quiz generation" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Role-based authentication and authorization" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Course and chapter management" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Interactive analytics dashboard" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Responsive design for desktop and mobile" }],
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Technology Stack" }],
+                },
+                {
+                    type: "orderedList",
+                    attrs: {
+                        start: 1,
+                    },
+                    content: [
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Next.js & React" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "TypeScript" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Prisma & PostgreSQL" }],
+                                },
+                            ],
+                        },
+                        {
+                            type: "listItem",
+                            content: [
+                                {
+                                    type: "paragraph",
+                                    content: [{ type: "text", text: "Tailwind CSS & shadcn/ui" }],
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Challenges" }],
+                },
+                {
+                    type: "blockquote",
+                    content: [
+                        {
+                            type: "paragraph",
+                            content: [
+                                {
+                                    type: "text",
+                                    text: "Building a scalable architecture while maintaining performance and reusable components was one of the biggest challenges during development.",
+                                },
+                            ],
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Code Example" }],
+                },
+                {
+                    type: "codeBlock",
+                    attrs: {
+                        language: "typescript",
+                    },
+                    content: [
+                        {
+                            type: "text",
+                            text: "const quizzes = await db.quiz.findMany();",
+                        },
+                    ],
+                },
+
+                {
+                    type: "heading",
+                    attrs: { level: 2 },
+                    content: [{ type: "text", text: "Conclusion" }],
+                },
+                {
+                    type: "paragraph",
+                    content: [
+                        {
+                            type: "text",
+                            text: "This project demonstrates my ability to build scalable, production-ready web applications using modern technologies while focusing on clean architecture, user experience, and maintainable code.",
+                        },
+                    ],
+                },
+            ],
+        },
         description:
             "A responsive online store with cart, authentication, product management, and payments.",
         image:
