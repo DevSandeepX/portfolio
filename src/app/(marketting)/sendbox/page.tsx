@@ -1,12 +1,14 @@
 import { Button } from '@/components/ui/button'
 import { db } from '../../drizzle/db'
-import { blogTable } from '../../drizzle/schema'
-import { mockBlogs } from '@/data/post-mock-data';
+import { blogTable, categoryTable } from '../../drizzle/schema'
+import { categories, mockBlogs } from '@/data/post-mock-data';
 
 export default async function SendboxPage() {
     try {
-        const blogs = await db.select().from(blogTable);
-        console.log(blogs);
+        // const blogs = await db.select().from(blogTable);
+        // console.log(blogs);
+        const categories = await db.select().from(categoryTable);
+        console.log(categories);
     } catch (err: any) {
         console.error("Drizzle Error:", err);
         console.error("Cause:", err.cause);
@@ -17,11 +19,9 @@ export default async function SendboxPage() {
             <form
                 action={async () => {
                     "use server"
-                    const insertableData = mockBlogs.map((p) => ({
-                        ...p
 
-                    }))
-                    await db.insert(blogTable).values(insertableData)
+                    const insertableData = categories.map((c) => ({ name: c, slug: c.toLowerCase() }))
+                    await db.insert(categoryTable).values(insertableData)
                 }}
             >
                 <Button type='submit'>

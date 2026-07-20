@@ -1,4 +1,6 @@
 import { boolean, index, integer, json, pgEnum, pgTable, text, timestamp, uniqueIndex, uuid } from "drizzle-orm/pg-core";
+import { categoryTable } from "./category";
+
 const blogStatuses = [
     "draft",
     "scheduled",
