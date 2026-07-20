@@ -1,8 +1,12 @@
 import { notFound } from "next/navigation";
+import { generateHTML } from "@tiptap/html";
+import StarterKit from "@tiptap/starter-kit";
 import Image from "next/image";
 import { Calendar, Clock, User } from "lucide-react";
 import { posts } from "@/data/post-mock-data";
 import { QUERIES } from "@/server/db/post-queries";
+import type { JSONContent } from "@tiptap/core";
+import TipTabRenderer from "@/components/TipTabRenderer";
 
 type Props = {
     params: Promise<{
@@ -13,15 +17,18 @@ type Props = {
 export default async function PostPage({ params }: Props) {
     const { slug } = await params;
 
-    const post = await QUERIES.getPostBySlug(slug)
+    const post = posts[0]
 
     if (!post) {
         notFound();
     }
+    const html = generateHTML(post.content, [
+        StarterKit,
+    ]);
 
     return (
         <main className="mx-auto container pt-10 pb-20">
-            <article className="space-y-8">
+            <section className="space-y-8">
                 <div className="space-y-4">
                     <span className="rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
                         {post.category}
@@ -63,7 +70,9 @@ export default async function PostPage({ params }: Props) {
                     />}
                 </div>
 
-            </article>
+                <TipTabRenderer content={post.content} />
+
+            </section>
         </main>
     );
 }
