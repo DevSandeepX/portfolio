@@ -12,33 +12,9 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { QUERIES } from "@/server/db/dashboard";
 
-export const stats = [
-    {
-        title: "Total Posts",
-        value: "24",
-        icon: FileText,
-        change: "+12%",
-    },
-    {
-        title: "Projects",
-        value: "12",
-        icon: FolderKanban,
-        change: "+2",
-    },
-    {
-        title: "Categories",
-        value: "8",
-        icon: Tag,
-        change: "+1",
-    },
-    {
-        title: "Total Views",
-        value: "128.9K",
-        icon: Eye,
-        change: "+8.2%",
-    },
-];
+
 
 export const recentPosts = [
     {
@@ -90,7 +66,34 @@ export const activities = [
     "Uploaded 5 images",
 ];
 
-export default function AdminDashboardPage() {
+export default async function AdminDashboardPage() {
+    const { blogs, categories, projects } = await QUERIES.getResourceCount()
+    const stats = [
+        {
+            title: "Total Posts",
+            value: blogs,
+            icon: FileText,
+            change: "+12%",
+        },
+        {
+            title: "Projects",
+            value: projects,
+            icon: FolderKanban,
+            change: "+2",
+        },
+        {
+            title: "Categories",
+            value: projects,
+            icon: Tag,
+            change: "+1",
+        },
+        {
+            title: "Total Views",
+            value: "128.9K",
+            icon: Eye,
+            change: "+8.2%",
+        },
+    ];
     return (
         <main className="space-y-8 p-6">
             {/* Header */}
