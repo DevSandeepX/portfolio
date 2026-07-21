@@ -22,8 +22,7 @@ export default async function BlogPage({ params }: Props) {
         notFound();
     }
 
-    const authorName = post.authorId ?? "Unknown Author";
-    const categoryName = post.categoryId ?? "Article";
+    const categoryName = post.category?.name ?? "Article";
 
     return (
         <main className="min-h-screen bg-background">
@@ -87,7 +86,7 @@ export default async function BlogPage({ params }: Props) {
                                 )}
                             </Avatar> */}
                             <div>
-                                <p className="font-semibold text-foreground">{authorName}</p>
+
                                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                                     {post.publishedAt && (
                                         <time dateTime={post.publishedAt.toISOString()}>

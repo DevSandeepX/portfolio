@@ -4,11 +4,30 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { QUERIES } from "@/server/db/post-queries";
+import CustomPagination from "@/components/CustomPagination";
+export default async function BlogPage({
+    searchParams,
+}: {
+    searchParams: Promise<{
+        page?: string;
+        limit?: string;
+        q?: string;
+    }>;
+}) {
+    const {
+        page = "1",
+        limit = "10",
+        q = "",
+    } = await searchParams;
 
-export default async function BlogPage() {
+    const pageNumber = Number(page);
+    const limitNumber = Number(limit);
 
-
-    const posts = await QUERIES.getAllPosts()
+    const { posts, pagination } = await QUERIES.getAllPosts({
+        page: pageNumber,
+        limit: limitNumber,
+        q,
+    });
 
     return (
         <main className="container py-12 space-y-12">
@@ -93,20 +112,9 @@ export default async function BlogPage() {
             </section>
 
             {/* Pagination */}
-
-            <section className="flex justify-center gap-2">
-
-                <Button variant="outline">Previous</Button>
-
-                <Button>1</Button>
-
-                <Button variant="outline">2</Button>
-
-                <Button variant="outline">3</Button>
-
-                <Button variant="outline">Next</Button>
-
-            </section>
+            <CustomPagination
+                totalPages={pagination.totalPages}
+            />
 
         </main>
     );
