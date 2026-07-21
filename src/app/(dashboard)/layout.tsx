@@ -29,7 +29,7 @@ const navItems: NavItem[] = [
     { label: "Analytics", href: "/dashboard/analytics", icon: <BarChart3 size={20} /> },
     { label: "Users", href: "/dashboard/users", icon: <Users size={20} /> },
     { label: "Projects", href: "/dashboard/projects", icon: <Folder size={20} /> },
-    { label: "Posts", href: "/dashboard/posts", icon: <FileText size={20} /> },
+    { label: "Blogs", href: "/dashboard/blogs", icon: <FileText size={20} /> },
     { label: "Settings", href: "/dashboard/settings", icon: <Settings size={20} /> },
 ];
 

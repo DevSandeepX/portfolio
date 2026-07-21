@@ -96,5 +96,70 @@ export const POSTQUERIES = {
             .from(blogTable)
             .orderBy(desc(blogTable.createdAt))
             .limit(3)
-    }
+    },
+
+    getAdminPosts: async ({
+        page,
+        limit,
+        q,
+    }: {
+        page: number;
+        limit: number;
+        q: string;
+    }) => {
+        const offset = (page - 1) * limit;
+
+        const whereClause = q
+            ? or(
+                ilike(blogTable.title, `%${q}%`),
+                arrayContains(blogTable.tags, [q])
+            )
+            : undefined;
+
+        const [posts, [{ totalPosts }]] = await Promise.all([
+            db
+                .select({
+                    id: blogTable.id,
+                    title: blogTable.title,
+                    slug: blogTable.slug,
+                    featured: blogTable.featured,
+                    image: blogTable.image,
+                    allowComments: blogTable.allowComments,
+                    status: blogTable.status,
+                    createdAt: blogTable.createdAt,
+                    publishedAt: blogTable.publishedAt,
+                    created: blogTable.createdAt,
+                    category: categoryTable.name,
+                })
+                .from(blogTable)
+                .leftJoin(
+                    categoryTable,
+                    eq(blogTable.categoryId, categoryTable.id)
+                )
+                .where(whereClause)
+                .offset(offset)
+                .limit(limit),
+
+            db
+                .select({
+                    totalPosts: count(),
+                })
+                .from(blogTable)
+                .where(whereClause),
+        ]);
+
+        const totalPages = Math.ceil(totalPosts / limit);
+
+        return {
+            posts,
+            pagination: {
+                page,
+                limit,
+                totalPosts,
+                totalPages,
+                hasNext: page * limit < totalPages,
+                hasPrevious: page > 1,
+            },
+        };
+    },
 }
