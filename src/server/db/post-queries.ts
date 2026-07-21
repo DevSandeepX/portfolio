@@ -1,8 +1,8 @@
 import { db } from "@/drizzle/db";
 import { blogTable, categoryTable } from "@/drizzle/schema";
-import { arrayContains, count, eq, ilike, or } from "drizzle-orm";
+import { arrayContains, count, desc, eq, ilike, or } from "drizzle-orm";
 
-export const QUERIES = {
+export const POSTQUERIES = {
     getAllPosts: async ({
         page,
         limit,
@@ -83,5 +83,18 @@ export const QUERIES = {
             .where(eq(blogTable.slug, slug));
 
         return post;
+    },
+
+    getRecentPosts: async () => {
+        return db
+            .select({
+                id: blogTable.id,
+                title: blogTable.title,
+                status: blogTable.status,
+                createdAt: blogTable.createdAt,
+            })
+            .from(blogTable)
+            .orderBy(desc(blogTable.createdAt))
+            .limit(3)
     }
 }

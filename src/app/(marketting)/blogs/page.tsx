@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { QUERIES } from "@/server/db/post-queries";
+import { POSTQUERIES } from "@/server/db/post-queries";
 import CustomPagination from "@/components/CustomPagination";
 export default async function BlogPage({
     searchParams,
@@ -23,7 +23,7 @@ export default async function BlogPage({
     const pageNumber = Number(page);
     const limitNumber = Number(limit);
 
-    const { posts, pagination } = await QUERIES.getAllPosts({
+    const { posts, pagination } = await POSTQUERIES.getAllPosts({
         page: pageNumber,
         limit: limitNumber,
         q,

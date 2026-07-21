@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarDays, Clock3, User, ArrowLeft, Share2, Bookmark, Link2 } from "lucide-react";
 import { notFound } from "next/navigation";
-import { QUERIES } from "@/server/db/post-queries";
+import { POSTQUERIES } from "@/server/db/post-queries";
 import { TipTapRenderer } from "@/components/TipTapRenderer";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -16,7 +16,7 @@ type Props = {
 
 export default async function BlogPage({ params }: Props) {
     const { slug } = await params;
-    const post = await QUERIES.getPostBySlug(slug);
+    const post = await POSTQUERIES.getPostBySlug(slug);
 
     if (!post) {
         notFound();

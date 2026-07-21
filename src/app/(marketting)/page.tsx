@@ -1,8 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Footer } from "./_components/Footer";
+
 import { HeroSection } from "./_components/HeroSection";
-import { QUERIES } from "@/server/db/setting";
+import { SETTINGQUERIES } from "@/server/db/setting";
 
 
 function formatDate(dateString: string) {
@@ -16,7 +14,7 @@ function formatDate(dateString: string) {
 
 
 export default async function HomePage() {
-  const setting = await QUERIES.getSetting()
+  const setting = await SETTINGQUERIES.getSetting()
   console.log(setting)
   return (
     <main className="min-h-screen text-slate-100">

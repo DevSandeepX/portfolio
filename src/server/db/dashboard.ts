@@ -2,7 +2,7 @@ import { db } from "@/drizzle/db"
 import { blogTable, categoryTable, projectTable, viewTable } from "@/drizzle/schema"
 import { countDistinct } from "drizzle-orm";
 
-export const QUERIES = {
+export const DASHBOARDQUERIES = {
     getResourceCount: async () => {
         const [totalBlogs, totalProjects, totalCategories, totalViews] = await Promise.all([
             db.select({ value: countDistinct(blogTable.id) }).from(blogTable),

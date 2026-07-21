@@ -1,4 +1,4 @@
-import { QUERIES } from "@/server/db/project";
+import { PROJECTQUERIES } from "@/server/db/project";
 import Link from "next/link";
 import ProjectCard from "../_components/ProjectCard";
 
@@ -20,7 +20,7 @@ export interface Project {
 
 }
 export default async function ProjectsPage() {
-    const projects: Project[] = await QUERIES.getAllProjects()
+    const projects: Project[] = await PROJECTQUERIES.getAllProjects()
     return (
         <main className="container mx-auto px-6 py-24">
             {/* Hero */}

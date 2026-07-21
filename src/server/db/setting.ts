@@ -2,7 +2,7 @@ import { db } from "@/drizzle/db"
 import { settingTable } from "@/drizzle/schema"
 import { redirect } from "next/navigation"
 
-export const QUERIES = {
+export const SETTINGQUERIES = {
     getSetting: async () => {
         const [setting] = await db.select().from(settingTable)
         if (!setting) return redirect("/configure-setting")
@@ -11,7 +11,7 @@ export const QUERIES = {
 }
 
 
-export const MUTATION = {
+export const SETTINGMUTATION = {
     createSetting: async () => {
         const [existing] = await db.select().from(settingTable)
         if (existing) return existing

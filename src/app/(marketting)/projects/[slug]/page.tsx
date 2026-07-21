@@ -8,7 +8,7 @@ import {
 
 } from "lucide-react";
 import { TipTapRenderer } from "@/components/TipTapRenderer";
-import { QUERIES } from "@/server/db/project";
+import { PROJECTQUERIES } from "@/server/db/project";
 
 
 export default async function ProjectDetailsPage({ params }: {
@@ -18,7 +18,7 @@ export default async function ProjectDetailsPage({ params }: {
 
     const { slug } = await params
 
-    const project = await QUERIES.getProjectBySlug(slug)
+    const project = await PROJECTQUERIES.getProjectBySlug(slug)
     return (
         <main className="container mx-auto max-w-7xl py-12">
             <Link

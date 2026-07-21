@@ -1,8 +1,8 @@
 import { db } from "@/drizzle/db"
 import { projectTable } from "@/drizzle/schema"
-import { eq } from "drizzle-orm"
+import { desc, eq } from "drizzle-orm"
 
-export const QUERIES = {
+export const PROJECTQUERIES = {
     getAllProjects: () => {
         return db.select().from(projectTable)
     },
@@ -11,7 +11,19 @@ export const QUERIES = {
         return project
     },
 
+    getRecentProjects: () => {
+        return db
+            .select({
+                id: projectTable.id,
+                title: projectTable.title,
+                status: projectTable.status,
+            })
+            .from(projectTable)
+            .orderBy(desc(projectTable.createdAt))
+            .limit(3)
+    }
+
 }
 
 
-export const MUTATIONS = {}
+export const PROJECTMUTATIONS = {}

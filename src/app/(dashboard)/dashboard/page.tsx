@@ -12,51 +12,11 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { QUERIES } from "@/server/db/dashboard";
+import { DASHBOARDQUERIES } from "@/server/db/dashboard";
+import { POSTQUERIES } from "@/server/db/post-queries";
+import { PROJECTQUERIES } from "@/server/db/project";
 
 
-
-export const recentPosts = [
-    {
-        id: 1,
-        title: "Building an AI LMS with Next.js",
-        status: "Published",
-        createdAt: "20 Jul 2026",
-        views: 1230,
-    },
-    {
-        id: 2,
-        title: "Mastering Drizzle ORM",
-        status: "Draft",
-        createdAt: "18 Jul 2026",
-        views: 0,
-    },
-    {
-        id: 3,
-        title: "Authentication using Clerk",
-        status: "Published",
-        createdAt: "15 Jul 2026",
-        views: 932,
-    },
-];
-
-export const recentProjects = [
-    {
-        id: 1,
-        title: "AI Learning Management System",
-        status: "Completed",
-    },
-    {
-        id: 2,
-        title: "Developer Portfolio",
-        status: "Live",
-    },
-    {
-        id: 3,
-        title: "Forever Ecommerce",
-        status: "Development",
-    },
-];
 
 export const activities = [
     "Published 'Building an AI LMS with Next.js'",
@@ -67,7 +27,17 @@ export const activities = [
 ];
 
 export default async function AdminDashboardPage() {
-    const { blogs, categories, projects, views } = await QUERIES.getResourceCount()
+
+    const [dashboardStats, recentPosts, recentProjects] = await Promise.all([
+        DASHBOARDQUERIES.getResourceCount(),
+        POSTQUERIES.getRecentPosts(),
+        PROJECTQUERIES.getRecentProjects()
+    ])
+
+    const { blogs, categories, projects, views } = dashboardStats
+
+
+
     const stats = [
         {
             title: "Total Posts",
@@ -171,23 +141,21 @@ export default async function AdminDashboardPage() {
                                     <h3 className="font-semibold">{post.title}</h3>
 
                                     <p className="text-muted-foreground mt-1 text-sm">
-                                        {post.createdAt}
+                                        {post.createdAt.toLocaleTimeString()}
                                     </p>
                                 </div>
 
                                 <div className="flex items-center gap-5">
                                     <Badge
                                         variant={
-                                            post.status === "Published" ? "default" : "secondary"
+                                            post.status === "archived" ?
+                                                "destructive" : "default"
                                         }
                                     >
                                         {post.status}
                                     </Badge>
 
-                                    <span className="text-muted-foreground flex items-center gap-1 text-sm">
-                                        <Eye className="h-4 w-4" />
-                                        {post.views}
-                                    </span>
+
                                 </div>
                             </div>
                         ))}
@@ -298,5 +266,5 @@ export default async function AdminDashboardPage() {
                 </Card>
             </section>
         </main>
-    );
+    )
 }
