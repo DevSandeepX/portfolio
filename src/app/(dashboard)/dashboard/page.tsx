@@ -67,7 +67,7 @@ export const activities = [
 ];
 
 export default async function AdminDashboardPage() {
-    const { blogs, categories, projects } = await QUERIES.getResourceCount()
+    const { blogs, categories, projects, views } = await QUERIES.getResourceCount()
     const stats = [
         {
             title: "Total Posts",
@@ -83,13 +83,13 @@ export default async function AdminDashboardPage() {
         },
         {
             title: "Categories",
-            value: projects,
+            value: categories,
             icon: Tag,
             change: "+1",
         },
         {
             title: "Total Views",
-            value: "128.9K",
+            value: views,
             icon: Eye,
             change: "+8.2%",
         },
