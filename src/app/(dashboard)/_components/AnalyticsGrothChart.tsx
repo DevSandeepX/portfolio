@@ -17,9 +17,9 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { growthData } from "@/data/analytics-data";
 
-export function AnalyticsGrothChart() {
+export function AnalyticsGrothChart(props: { growthData: { month: string, visitors: number }[] }) {
+    const { growthData } = props
     return (
         <Card className="col-span-2">
             <CardHeader>

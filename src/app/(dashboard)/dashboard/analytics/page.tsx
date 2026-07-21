@@ -1,10 +1,46 @@
-import { stats } from "@/data/analytics-data";
+// import { stats } from "@/data/analytics-data";
+import {
+    Activity,
+    FolderKanban,
+    Newspaper,
+    Users,
+} from "lucide-react";
 import { AnalyticsGrothChart } from "../../_components/AnalyticsGrothChart";
 import { TechChart } from "../../_components/AnalyticsTechChart";
 import { AnalyticsStatsCard } from "../../_components/AnalyticsStatsCard";
+import { ANALITICS_QUERIES } from "@/server/db/analytic";
 
 
-export default function AnalyticsPage() {
+export default async function AnalyticsPage() {
+    const [visitores, projects, posts, visitorsGroth] = await Promise.all([
+        ANALITICS_QUERIES.getVisitoresGrothStats(),
+        ANALITICS_QUERIES.getProjectsGrothStats(),
+        ANALITICS_QUERIES.getPostsGrothStats(),
+        ANALITICS_QUERIES.getVisitoresGrothData()
+    ])
+
+    console.log(visitores)
+
+    const stats = [
+        {
+            title: "Visitors",
+            value: visitores.current,
+            change: visitores.change,
+            icon: Users,
+        },
+        {
+            title: "Projects",
+            value: projects.current,
+            change: projects.change,
+            icon: FolderKanban,
+        },
+        {
+            title: "Articles",
+            value: posts.current,
+            change: posts.change,
+            icon: Newspaper,
+        },
+    ];
     return (
         <div className="space-y-8 p-8">
             <div>
@@ -18,7 +54,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Stats */}
-            <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {stats.map((item) => (
                     <AnalyticsStatsCard
                         key={item.title}
@@ -28,18 +64,13 @@ export default function AnalyticsPage() {
             </section>
 
             {/* Charts */}
-            <section className="grid gap-6 lg:grid-cols-3">
+            <section className="grid gap-6 grid-cols-1">
                 <div className="lg:col-span-2">
-                    <AnalyticsGrothChart />
+                    <AnalyticsGrothChart growthData={visitorsGroth} />
                 </div>
 
             </section>
 
-            <section className="grid gap-6 lg:grid-cols-2">
-                <TechChart />
-
-                {/* Country Visitors / Recent Activity goes here */}
-            </section>
         </div>
     );
 }

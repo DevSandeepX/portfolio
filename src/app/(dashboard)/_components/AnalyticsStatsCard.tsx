@@ -3,8 +3,8 @@ import { LucideIcon, TrendingUp } from "lucide-react";
 
 interface Props {
     title: string;
-    value: string;
-    change: string;
+    value: number;
+    change: number;
     icon: LucideIcon;
 }
 
