@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { MUTATIONS } from "../db/view";
+import { ACTIVITY_MUTATIONS } from "../db/activity";
 
 export async function createView(path: string): Promise<{ success: boolean }> {
     try {

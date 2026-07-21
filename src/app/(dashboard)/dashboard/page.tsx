@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { DASHBOARDQUERIES } from "@/server/db/dashboard";
 import { POSTQUERIES } from "@/server/db/post-queries";
 import { PROJECTQUERIES } from "@/server/db/project";
+import { ACTIVITY_QUERIES } from "@/server/db/activity";
 
 
 
@@ -28,10 +29,11 @@ export const activities = [
 
 export default async function AdminDashboardPage() {
 
-    const [dashboardStats, recentPosts, recentProjects] = await Promise.all([
+    const [dashboardStats, recentPosts, recentProjects, recentActivities] = await Promise.all([
         DASHBOARDQUERIES.getResourceCount(),
         POSTQUERIES.getRecentPosts(),
-        PROJECTQUERIES.getRecentProjects()
+        PROJECTQUERIES.getRecentProjects(),
+        ACTIVITY_QUERIES.getRecentActivities()
     ])
 
     const { blogs, categories, projects, views } = dashboardStats
@@ -230,11 +232,11 @@ export default async function AdminDashboardPage() {
                     </CardHeader>
 
                     <CardContent className="space-y-4">
-                        {activities.map((activity, index) => (
-                            <div key={index} className="flex items-start gap-3">
+                        {recentActivities.map((activity, index) => (
+                            <div key={activity.id} className="flex items-start gap-3">
                                 <div className="bg-primary mt-1 h-2 w-2 rounded-full" />
 
-                                <p className="text-sm">{activity}</p>
+                                <p className="text-sm">{activity.message}</p>
                             </div>
                         ))}
                     </CardContent>
@@ -248,8 +250,8 @@ export default async function AdminDashboardPage() {
                         <Users className="text-primary h-10 w-10" />
 
                         <div>
-                            <p className="text-muted-foreground">Monthly Visitors</p>
-                            <h2 className="text-3xl font-bold">43,210</h2>
+                            <p className="text-muted-foreground">Total Visitors</p>
+                            <h2 className="text-3xl font-bold">{views}</h2>
                         </div>
                     </CardContent>
                 </Card>
@@ -259,7 +261,7 @@ export default async function AdminDashboardPage() {
                         <Eye className="text-primary h-10 w-10" />
 
                         <div>
-                            <p className="text-muted-foreground">Monthly Page Views</p>
+                            <p className="text-muted-foreground">Total Page Views</p>
                             <h2 className="text-3xl font-bold">128,940</h2>
                         </div>
                     </CardContent>
