@@ -163,3 +163,17 @@ export const POSTQUERIES = {
         };
     },
 }
+
+// Mutations
+export const POST_MUTATIONS = {
+    insertPost: async (data: typeof blogTable.$inferInsert) => {
+        // check duplicate post or slug
+        const [existing] = await db.select({ id: blogTable.id }).from(blogTable).where(eq(blogTable.slug, data.slug))
+        if (existing) throw new Error("A post already exist in database")
+
+        // save data in db
+        return db.insert(blogTable).values(data).returning()
+
+    }
+
+}

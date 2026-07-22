@@ -9,9 +9,10 @@ import SeoInformation from "./SeoInformation";
 import PublishingOptions from "./PublishingOptions";
 import AdditionalSettings from "./AdditionalSettings";
 import FormActions from "./FormActions";
+import { createPost } from "@/server/actions/post";
 
 
-export default function PostForm() {
+export default function PostForm(props: { categories: { id: string, name: string }[] }) {
 
     const form = useForm<BlogFormInput>({
         resolver: zodResolver(blogSchema),
@@ -22,7 +23,7 @@ export default function PostForm() {
             excerpt: "",
             image: "",
             status: "draft",
-            categoryId: "19b779b0-05fd-4052-b0dd-b42db3684c9b",
+            categoryId: "",
             content: {
                 type: "doc",
                 content: [],
@@ -40,7 +41,19 @@ export default function PostForm() {
     });
 
     async function onSubmit(values: BlogFormInput) {
-        console.log(values)
+        try {
+            const res = await createPost({ ...values, authorId: "sn_143_ns_love_2" })
+            if (!res.success) {
+                alert(res.message)
+                return
+            }
+
+            alert(res.message)
+
+        } catch (error) {
+            console.error(error)
+            alert("failed to create a post")
+        }
     }
 
 
@@ -48,7 +61,7 @@ export default function PostForm() {
         <FormProvider {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 <div className="space-y-6">
-                    <BasicInformation />
+                    <BasicInformation categories={props.categories} />
                     <ContentEditor />
                     <PublishingOptions />
                     <SeoInformation />

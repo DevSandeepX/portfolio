@@ -1,15 +1,18 @@
 "use client";
 
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { BlogFormInput } from "@/schema/blog";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import CategorySelector from "@/app/(dashboard)/_components/CategorySelector";
+import PostCategorySelector from "./PostCategorySelector";
 
-export default function BasicInformation() {
+export default function BasicInformation(props: { categories: { id: string, name: string }[] }) {
     const {
         register,
+        control,
         formState: { errors },
     } = useFormContext<BlogFormInput>();
 
@@ -111,12 +114,7 @@ export default function BasicInformation() {
                     </Label>
 
                     {/* Replace this Input with your CategorySelect component */}
-                    <Input
-                        id="categoryId"
-                        placeholder="Category ID"
-                        {...register("categoryId")}
-                    />
-
+                    <PostCategorySelector categories={props.categories} name="categoryId" control={control} />
                     {errors.categoryId && (
                         <p className="text-sm text-destructive">
                             {errors.categoryId.message}
