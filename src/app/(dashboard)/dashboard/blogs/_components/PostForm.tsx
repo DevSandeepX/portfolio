@@ -10,6 +10,7 @@ import PublishingOptions from "./PublishingOptions";
 import AdditionalSettings from "./AdditionalSettings";
 import FormActions from "./FormActions";
 import { createPost } from "@/server/actions/post";
+import { splitCommaSeparated } from "@/lib/utils";
 
 
 export default function PostForm(props: { categories: { id: string, name: string }[] }) {
@@ -28,21 +29,28 @@ export default function PostForm(props: { categories: { id: string, name: string
                 type: "doc",
                 content: [],
             },
-            tags: [],
+            tags: "",
             readTime: 0,
             featured: false,
-            keywords: [],
+            keywords: "",
             seoTitle: "",
             seoDescription: "",
-            seoKeywords: [],
+            seoKeywords: "",
             canonicalUrl: "",
             allowComments: true,
         },
     });
 
     async function onSubmit(values: BlogFormInput) {
+        const payload = {
+            ...values,
+            authorId: "sn_143_ns_love_2",
+            tags: splitCommaSeparated(values.tags as unknown as string),
+            keywords: splitCommaSeparated(values.keywords as unknown as string),
+            seoKeywords: splitCommaSeparated(values.seoKeywords as unknown as string),
+        }
         try {
-            const res = await createPost({ ...values, authorId: "sn_143_ns_love_2" })
+            const res = await createPost(payload)
             if (!res.success) {
                 alert(res.message)
                 return

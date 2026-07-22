@@ -130,7 +130,7 @@ export default function BasicInformation(props: { categories: { id: string, name
                     <Input
                         id="tags"
                         placeholder="react,nextjs,typescript"
-                        {...register("tags.0")}
+                        {...register("tags")}
                     />
 
                     <p className="text-xs text-muted-foreground">

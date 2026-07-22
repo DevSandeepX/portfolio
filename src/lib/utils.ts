@@ -17,3 +17,11 @@ export function generateSlug(text: string): string {
     .replace(/-+/g, "-") // multiple hyphens -> single
     .replace(/^-|-$/g, ""); // trim hyphens
 }
+
+
+export function splitCommaSeparated(value: string) {
+  return value
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}

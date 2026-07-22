@@ -1,4 +1,3 @@
-import React from 'react'
 import PostForm from '../_components/PostForm'
 import { CATEGORY_QUERIES } from '@/server/db/category'
 

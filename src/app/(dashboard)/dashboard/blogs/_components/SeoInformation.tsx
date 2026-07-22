@@ -78,7 +78,7 @@ export default function SeoInformation() {
                     <Input
                         id="keywords"
                         placeholder="nextjs, react, typescript"
-                        {...register("keywords.0")}
+                        {...register("keywords")}
                     />
 
                     <p className="text-xs text-muted-foreground">
@@ -100,7 +100,7 @@ export default function SeoInformation() {
                     <Input
                         id="seoKeywords"
                         placeholder="seo, optimization, blog"
-                        {...register("seoKeywords.0")}
+                        {...register("seoKeywords")}
                     />
 
                     <p className="text-xs text-muted-foreground">

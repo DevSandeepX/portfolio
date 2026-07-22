@@ -42,8 +42,7 @@ export const blogSchema = z.object({
         ),
 
     tags: z
-        .array(z.string())
-        .default([]),
+        .string(),
 
     readTime: z
         .number()
@@ -56,8 +55,8 @@ export const blogSchema = z.object({
         .default(false),
 
     keywords: z
-        .array(z.string())
-        .default([]),
+        .string(),
+
 
 
     // SEO
@@ -73,8 +72,8 @@ export const blogSchema = z.object({
         .default(""),
 
     seoKeywords: z
-        .array(z.string())
-        .default([]),
+        .string()
+    ,
 
     canonicalUrl: z
         .string()
